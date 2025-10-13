@@ -1,0 +1,57 @@
+[
+    {
+        "model": "CNN",
+        "epochs": [
+            {
+                "epoch": 1,
+                "val_loss": 0.6750847415924073,
+                "val_accuracy": 0.604
+            },
+            {
+                "epoch": 2,
+                "val_loss": 0.6583554601669311,
+                "val_accuracy": 0.618
+            },
+            {
+                "epoch": 3,
+                "val_loss": 0.6431685762405396,
+                "val_accuracy": 0.658
+            },
+            {
+                "epoch": 4,
+                "val_loss": 0.6437925856113433,
+                "val_accuracy": 0.632
+            },
+            {
+                "epoch": 5,
+                "val_loss": 0.6723756566047668,
+                "val_accuracy": 0.646
+            },
+            {
+                "epoch": 6,
+                "val_loss": 0.7508341135978699,
+                "val_accuracy": 0.65
+            },
+            {
+                "epoch": 7,
+                "val_loss": 0.9221891331672668,
+                "val_accuracy": 0.648
+            },
+            {
+                "epoch": 8,
+                "val_loss": 1.0628140416145324,
+                "val_accuracy": 0.658
+            },
+            {
+                "epoch": 9,
+                "val_loss": 1.2165274920463562,
+                "val_accuracy": 0.656
+            },
+            {
+                "epoch": 10,
+                "val_loss": 1.3803370265960693,
+                "val_accuracy": 0.632
+            }
+        ]
+    }
+]

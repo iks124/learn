@@ -1,0 +1,8 @@
+# 忽略图片
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# 忽略tmp文件夹
+tmp/
