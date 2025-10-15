@@ -33,3 +33,10 @@ git push -u origin master
 ```
 
 > Replace `<your-repo-url>` with your actual repository URL.
+
+## config git 
+
+```bash
+git config --global user.name "iks"
+git config --global user.email "ucasrhk@gmail.com"
+```
