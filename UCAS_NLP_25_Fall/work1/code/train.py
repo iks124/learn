@@ -1,5 +1,5 @@
 from data import TrainDataset, TestDataset
-from model import CNN  # 假设有多个模型类，如 CNN, ResNet, etc.
+from model import CNN,RNN,DNN  
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
@@ -16,8 +16,8 @@ NUM_WORKERS = 8
 # 模型配置字典
 MODEL_CONFIGS = {
     "CNN": {"model": CNN, "lr": 0.001},
-    # 如果有其他模型，可以在这里添加
-    # "ResNet": {"model": ResNet, "lr": 0.0001},
+    "RNN": {"model": RNN, "lr": 0.001},
+    "DNN": {"model": DNN, "lr": 0.001},
 }
 
 def train_one_epoch(model, loader, criterion, optimizer, device):
@@ -35,6 +35,9 @@ def train_one_epoch(model, loader, criterion, optimizer, device):
 def evaluate(model, loader, criterion, device):
     model.eval()
     total_loss, correct, total = 0.0, 0, 0
+    # 假设标签: 0=猫, 1=狗
+    class_correct = {0: 0, 1: 0}
+    class_total = {0: 0, 1: 0}
     with torch.no_grad():
         for batch in tqdm(loader, desc="Eval"):
             imgs, labels = batch
@@ -47,8 +50,22 @@ def evaluate(model, loader, criterion, device):
             correct += (preds == labels).sum().item()
             total += labels.size(0)
 
+            # 分别累计猫/狗的正确数与总数
+            for cls in (0, 1):
+                mask = (labels == cls)
+                cls_total = mask.sum().item()
+                if cls_total > 0:
+                    class_total[cls] += cls_total
+                    class_correct[cls] += (preds[mask] == cls).sum().item()
+
     avg_loss = total_loss / max(total, 1)
     accuracy = correct / max(total, 1)
+
+    # 计算并打印猫/狗准确率
+    cat_acc = class_correct[0] / max(class_total[0], 1)
+    dog_acc = class_correct[1] / max(class_total[1], 1)
+    print(f"  猫 准确率: {cat_acc:.4f} | 狗 准确率: {dog_acc:.4f}")
+
     return avg_loss, accuracy
 
 def train_and_evaluate(model_name, model_class, lr, device):
