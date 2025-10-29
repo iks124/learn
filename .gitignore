@@ -3,6 +3,7 @@
 *.jpg
 *.jpeg
 *.gif
+*.pyc
 
 # 忽略tmp文件夹
 tmp/

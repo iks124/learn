@@ -77,3 +77,6 @@ def test():
     print(len(ds))
     img, label = ds[0]
     print(img.shape, label)
+    
+if __name__ == "__main__":
+    test()

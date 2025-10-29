@@ -3,6 +3,7 @@ from model import CNN,RNN,DNN
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
+import os
 
 # -------------------------
 # Configurations
@@ -107,7 +108,8 @@ def main():
             print(f"  Epoch {epoch_result['epoch']} - Val Loss: {epoch_result['val_loss']:.4f}, Val Accuracy: {epoch_result['val_accuracy']:.4f}")
 
     # 将结果存储到 JSON 文件
-    results_file = "UCAS_NLP_25_Fall/work1/code/training_results.json"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    results_file = os.path.join(current_dir, "training_results.json")
     with open(results_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=4, ensure_ascii=False)
     print(f"\n训练结果已保存到文件: {results_file}")
