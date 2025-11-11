@@ -4,6 +4,8 @@
 *.jpeg
 *.gif
 *.pyc
+*.txt
 
 # 忽略tmp文件夹
 tmp/
+data/
