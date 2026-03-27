@@ -1,3 +1,7 @@
+*.npy
+*byte
+*.zip
+
 # 忽略图片
 *.png
 *.jpg
